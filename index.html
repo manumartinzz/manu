@@ -1,11 +1,18 @@
-<!DOCTYPE html> <html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Pessoal</title>
 
+    <!-- Carrega o CSS. -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- Variáveis de Configuração do Ambiente (mantidas para compatibilidade) -->
+    <script>
+        const __initial_config = {};
+        const __app_id = 'personal-site-app';
+    </script>
   </head>
   <body>
     <div class="container">
@@ -17,12 +24,14 @@
         <p id="profileTitle">Estudante</p>
       </div>
       <div class="tabs">
+        <!-- Botões de aba. O 'data-tab' aponta para o ID do conteúdo abaixo. -->
         <button class="tab-button active" data-tab="sobre">Sobre Mim</button> 
         <button class="tab-button" data-tab="personalidade">Personalidade</button> 
         <button class="tab-button" data-tab="interesses">Interesses</button> 
         <button class="tab-button" data-tab="galeria">Galeria</button>
       </div>
       <div class="content-area">
+        <!-- Conteúdos da aba. O ID corresponde ao 'data-tab' do botão. -->
         <div class="tab-content active" id="sobre">
           <h2>Sobre Mim</h2>
           <p id="aboutText">Oii gente eu sou a manu, tenho 17 anos fiz esse mês de novembro, sou uma pessoa sorridente e muito gentil, os aspectos da minha personalidade e ser uma pessoa de muita opnião e educação</p>
@@ -50,6 +59,7 @@
       </div>
     </div>
 
+    <!-- O script com a lógica de abas -->
     <script src="script.js"></script>
 
   </body>
