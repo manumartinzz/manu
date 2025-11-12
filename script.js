@@ -1,8 +1,8 @@
 const defaultConfig = {
     profile_name: "Emanuelle",
     profile_title: "Estudante",
-    about_text: "Olá! Bem-vindo à minha página pessoal. Aqui você pode conhecer um pouco mais sobre mim, minha personalidade e meus interesses. Sinta-se à vontade para explorar as diferentes abas e descobrir mais sobre quem eu sou!",
-    personality_text: "Sou uma pessoa criativa, apaixonada por aprender coisas novas e sempre em busca de desafios. Gosto de me conectar com pessoas e compartilhar experiências. Valorizo a autenticidade e acredito que cada dia é uma oportunidade para crescer e evoluir.",
+    about_text: "Oii gente eu sou a manu, tenho 17 anos fiz esse mês de novembro, sou uma pessoa sorridente e muito gentil, os aspectos da minha personalidade e ser uma pessoa de muita opnião e educação",
+    personality_text: "Sou uma pessoa criativa, apaixonada por aprender coisas novas e sempre em busca de desafios. Gosto de me conectar com pessoas e compartilhar experiências. Valorizo a autenticidade e acredito que acredito que cada dia é uma oportunidade para crescer e evoluir.",
     interests_text: "Tenho diversos interesses que vão desde tecnologia e design até música e viagens. Adoro explorar novas culturas, experimentar diferentes culinárias e me manter atualizado com as últimas tendências. Nos momentos livres, gosto de ler, assistir filmes e passar tempo com amigos e família.",
     background_color: "#667eea",
     primary_color: "#a855f7",
@@ -20,44 +20,36 @@ async function onConfigChange(config) {
     const aboutText = config.about_text || defaultConfig.about_text;
     const personalityText = config.personality_text || defaultConfig.personality_text;
     const interestsText = config.interests_text || defaultConfig.interests_text;
-    const backgroundColor = config.background_color || defaultConfig.background_color;
-    const primaryColor = config.primary_color || defaultConfig.primary_color;
-    const textColor = config.text_color || defaultConfig.text_color;
-    const cardColor = config.card_color || defaultConfig.card_color;
-    const accentColor = config.accent_color || defaultConfig.accent_color;
-    const fontFamily = config.font_family || defaultConfig.font_family;
-    const fontSize = config.font_size || defaultConfig.font_size;
 
-    document.getElementById('profileName').textContent = profileName;
-    document.getElementById('profileTitle').textContent = profileTitle;
+    // Atualiza o texto dos elementos
+    if (document.getElementById('profileName')) {
+        document.getElementById('profileName').textContent = profileName;
+    }
+    if (document.getElementById('profileTitle')) {
+        document.getElementById('profileTitle').textContent = profileTitle;
+    }
     
     // Atualiza o texto nas abas, mantendo o conteúdo original do HTML se não houver configuração externa.
     if (document.getElementById('aboutText')) {
-        document.getElementById('aboutText').textContent = document.getElementById('aboutText').textContent || aboutText;
+        // Se o conteúdo do HTML já estiver preenchido, prioriza o HTML. Caso contrário, usa o padrão.
+        document.getElementById('aboutText').textContent = document.getElementById('aboutText').textContent.trim() ? document.getElementById('aboutText').textContent : aboutText;
     }
     if (document.getElementById('personalityText')) {
-        document.getElementById('personalityText').textContent = document.getElementById('personalityText').textContent || personalityText;
+        document.getElementById('personalityText').textContent = document.getElementById('personalityText').textContent.trim() ? document.getElementById('personalityText').textContent : personalityText;
     }
     if (document.getElementById('interestsText')) {
-        document.getElementById('interestsText').textContent = document.getElementById('interestsText').textContent || interestsText;
+        document.getElementById('interestsText').textContent = document.getElementById('interestsText').textContent.trim() ? document.getElementById('interestsText').textContent : interestsText;
     }
 
-
-    // Aplica cores dinamicamente (para compatibilidade com ambiente externo)
+    // A parte de estilização dinâmica (mantida para compatibilidade com ambiente externo)
     const contentArea = document.querySelector('.content-area');
     if (contentArea) {
-        contentArea.style.background = cardColor; 
+        contentArea.style.background = config.card_color || defaultConfig.card_color; 
     }
 
     const profilePhoto = document.getElementById('profilePhoto');
     if (profilePhoto) {
-        profilePhoto.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${primaryColor} 100%)`; 
-    }
-
-    const activeTabButton = document.querySelector('.tab-button.active');
-    if (activeTabButton) {
-        activeTabButton.style.background = primaryColor;
-        activeTabButton.style.borderColor = primaryColor;
+        profilePhoto.style.background = `linear-gradient(135deg, ${config.accent_color || defaultConfig.accent_color} 0%, ${config.primary_color || defaultConfig.primary_color} 100%)`; 
     }
 }
 
@@ -164,7 +156,7 @@ function mapToCapabilities(config) {
 
 
 // ===============================================
-// CORREÇÃO PRINCIPAL: LÓGICA DE ATIVAÇÃO DAS ABAS
+// LÓGICA DE ATIVAÇÃO DAS ABAS
 // ===============================================
 
 /**
@@ -188,8 +180,6 @@ function activateTab(tabId) {
     const clickedButton = document.querySelector(`[data-tab="${tabId}"]`);
     if (clickedButton) {
         clickedButton.classList.add('active');
-        // Chamada opcional para re-aplicar o estilo do botão ativo (se o SDK permitir troca de cores)
-        // onConfigChange({}); 
     }
 
     // 4. Ativa o conteúdo correspondente
@@ -200,7 +190,7 @@ function activateTab(tabId) {
 }
 
 // 5. Adiciona event listeners a todos os botões quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', () => {
+function setupTabSwitching() {
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach(button => {
         // Para cada botão, adiciona um escutador de evento de clique
@@ -210,7 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
             activateTab(tabId);
         });
     });
+}
 
-    // Chama onConfigChange uma vez para garantir que os textos iniciais sejam carregados corretamente
+// Inicia a aplicação
+document.addEventListener('DOMContentLoaded', () => {
+    // Aplica as configurações iniciais de texto
     onConfigChange({});
+    
+    // Configura o sistema de abas
+    setupTabSwitching();
 });
