@@ -13,6 +13,7 @@ const defaultConfig = {
     font_size: 16
 };
 
+// Esta função atualiza o conteúdo do texto baseado nas configurações.
 async function onConfigChange(config) {
     const profileName = config.profile_name || defaultConfig.profile_name;
     const profileTitle = config.profile_title || defaultConfig.profile_title;
@@ -29,56 +30,38 @@ async function onConfigChange(config) {
 
     document.getElementById('profileName').textContent = profileName;
     document.getElementById('profileTitle').textContent = profileTitle;
-    document.getElementById('aboutText').textContent = aboutText;
-    document.getElementById('personalityText').textContent = personalityText;
-    document.getElementById('interestsText').textContent = interestsText;
+    
+    // Atualiza o texto nas abas, mantendo o conteúdo original do HTML se não houver configuração externa.
+    if (document.getElementById('aboutText')) {
+        document.getElementById('aboutText').textContent = document.getElementById('aboutText').textContent || aboutText;
+    }
+    if (document.getElementById('personalityText')) {
+        document.getElementById('personalityText').textContent = document.getElementById('personalityText').textContent || personalityText;
+    }
+    if (document.getElementById('interestsText')) {
+        document.getElementById('interestsText').textContent = document.getElementById('interestsText').textContent || interestsText;
+    }
 
-    // 🚩 CORREÇÃO PRINCIPAL: 
-    // Comentamos ou removemos os estilos de body para permitir que o 'estilo.css' faça o trabalho inicial.
-    // document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${primaryColor} 100%)`;
-    // document.body.style.color = textColor;
-    // document.body.style.fontFamily = `${fontFamily}, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`;
-    // document.body.style.fontSize = `${fontSize}px`; 
 
+    // Aplica cores dinamicamente (para compatibilidade com ambiente externo)
     const contentArea = document.querySelector('.content-area');
     if (contentArea) {
-        // Se este SDK permitir a alteração dinâmica de cores, esta linha deve permanecer
         contentArea.style.background = cardColor; 
     }
 
     const profilePhoto = document.getElementById('profilePhoto');
     if (profilePhoto) {
-        // Se este SDK permitir a alteração dinâmica de cores, esta linha deve permanecer
         profilePhoto.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${primaryColor} 100%)`; 
     }
 
     const activeTabButton = document.querySelector('.tab-button.active');
     if (activeTabButton) {
-        // Se este SDK permitir a alteração dinâmica de cores, esta linha deve permanecer
         activeTabButton.style.background = primaryColor;
         activeTabButton.style.borderColor = primaryColor;
     }
-
-    // Se a intenção é só alterar o texto, não é ideal manipular o tamanho da fonte via JS
-    // se o CSS já está fazendo isso.
-    /*
-    const headers = document.querySelectorAll('.header h1, .tab-content h2');
-    headers.forEach(header => {
-        header.style.fontSize = `${fontSize * 2}px`;
-    });
-
-    const paragraphs = document.querySelectorAll('.header p, .tab-content p');
-    paragraphs.forEach(p => {
-        p.style.fontSize = `${fontSize * 1.125}px`;
-    });
-
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(button => {
-        button.style.fontSize = `${fontSize * 1.125}px`;
-    });
-    */
 }
 
+// O restante da função mapToCapabilities (mantido para compatibilidade do SDK)
 function mapToCapabilities(config) {
     // ... (função mapToCapabilities permanece inalterada se for necessária para o SDK)
     return {
@@ -90,8 +73,6 @@ function mapToCapabilities(config) {
                     if (window.elementSdk) {
                         window.elementSdk.setConfig({ background_color: value });
                     }
-                    // 💡 Nota: Para que a mudança de tema funcione, 
-                    // a linha document.body.style.background deve ser reativada AQUI
                 }
             },
             {
@@ -113,4 +94,123 @@ function mapToCapabilities(config) {
                 }
             },
             {
-                get: () => config.card_color || defaultConfig
+                get: () => config.card_color || defaultConfig.card_color,
+                set: (value) => {
+                    config.card_color = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ card_color: value });
+                    }
+                }
+            },
+             {
+                get: () => config.accent_color || defaultConfig.accent_color,
+                set: (value) => {
+                    config.accent_color = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ accent_color: value });
+                    }
+                }
+            },
+        ],
+        textFields: [
+            {
+                get: () => config.profile_name || defaultConfig.profile_name,
+                set: (value) => {
+                    config.profile_name = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ profile_name: value });
+                    }
+                },
+            },
+             {
+                get: () => config.profile_title || defaultConfig.profile_title,
+                set: (value) => {
+                    config.profile_title = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ profile_title: value });
+                    }
+                },
+            },
+            {
+                get: () => config.about_text || defaultConfig.about_text,
+                set: (value) => {
+                    config.about_text = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ about_text: value });
+                    }
+                },
+            },
+            {
+                get: () => config.personality_text || defaultConfig.personality_text,
+                set: (value) => {
+                    config.personality_text = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ personality_text: value });
+                    }
+                },
+            },
+             {
+                get: () => config.interests_text || defaultConfig.interests_text,
+                set: (value) => {
+                    config.interests_text = value;
+                    if (window.elementSdk) {
+                        window.elementSdk.setConfig({ interests_text: value });
+                    }
+                },
+            },
+        ],
+    };
+}
+
+
+// ===============================================
+// CORREÇÃO PRINCIPAL: LÓGICA DE ATIVAÇÃO DAS ABAS
+// ===============================================
+
+/**
+ * Alterna entre a aba e o conteúdo ativo.
+ * @param {string} tabId O ID do conteúdo da aba a ser ativado (ex: 'sobre', 'personalidade').
+ */
+function activateTab(tabId) {
+    // 1. Desativa todos os botões de aba (remove a classe 'active')
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // 2. Desativa todo o conteúdo da aba (remove a classe 'active', que esconde o conteúdo)
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // 3. Ativa o botão clicado
+    const clickedButton = document.querySelector(`[data-tab="${tabId}"]`);
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+        // Chamada opcional para re-aplicar o estilo do botão ativo (se o SDK permitir troca de cores)
+        // onConfigChange({}); 
+    }
+
+    // 4. Ativa o conteúdo correspondente
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) {
+        targetContent.classList.add('active');
+    }
+}
+
+// 5. Adiciona event listeners a todos os botões quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        // Para cada botão, adiciona um escutador de evento de clique
+        button.addEventListener('click', (event) => {
+            // Pega o valor do atributo 'data-tab', que é o ID do conteúdo
+            const tabId = event.currentTarget.getAttribute('data-tab');
+            activateTab(tabId);
+        });
+    });
+
+    // Chama onConfigChange uma vez para garantir que os textos iniciais sejam carregados corretamente
+    onConfigChange({});
+});
