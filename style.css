@@ -77,17 +77,35 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* Efeito de hover para botões inativos */
 .tab-button:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilo do botão ativo (cor roxa e elevação/sombra inicial) */
 .tab-button.active {
     background: #a855f7;
     border-color: #a855f7;
     box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
+    /* Mantém o botão ligeiramente levantado quando ativo */
+    transform: translateY(-2px); 
 }
+
+/* 🚩 CORREÇÃO APLICADA AQUI:
+   Garante que o botão ativo MANTENHA A COR ROXA ao passar o mouse,
+   e apenas reforce o efeito de elevação/sombra.
+*/
+.tab-button.active:hover {
+    /* Mantém o fundo roxo da classe .active */
+    background: #a855f7;
+    /* Garante a elevação */
+    transform: translateY(-3px); 
+    /* Reforça a sombra para um efeito mais dramático de hover */
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.7); 
+}
+
 
 .content-area {
     background: rgba(255, 255, 255, 0.15);
@@ -187,4 +205,3 @@ body {
     .tab-content p {
         font-size: 16px;
     }
-}
