@@ -1,6 +1,6 @@
 const defaultConfig = {
-    profile_name: "Seu Nome",
-    profile_title: "Seu Título ou Profissão",
+    profile_name: "Emanuelle",
+    profile_title: "Estudante",
     about_text: "Olá! Bem-vindo à minha página pessoal. Aqui você pode conhecer um pouco mais sobre mim, minha personalidade e meus interesses. Sinta-se à vontade para explorar as diferentes abas e descobrir mais sobre quem eu sou!",
     personality_text: "Sou uma pessoa criativa, apaixonada por aprender coisas novas e sempre em busca de desafios. Gosto de me conectar com pessoas e compartilhar experiências. Valorizo a autenticidade e acredito que cada dia é uma oportunidade para crescer e evoluir.",
     interests_text: "Tenho diversos interesses que vão desde tecnologia e design até música e viagens. Adoro explorar novas culturas, experimentar diferentes culinárias e me manter atualizado com as últimas tendências. Nos momentos livres, gosto de ler, assistir filmes e passar tempo com amigos e família.",
