@@ -11,6 +11,36 @@
         const __initial_config = {};
         const __app_id = 'personal-site-app';
     </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove 'active' de todos os botões e conteúdos
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Adiciona 'active' ao botão clicado
+                    tab.classList.add('active');
+
+                    // Encontra e adiciona 'active' ao conteúdo correspondente
+                    const targetId = tab.getAttribute('data-tab');
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            // Garante que a primeira aba esteja ativa ao carregar
+            const firstTab = document.querySelector('.tab-button');
+            if(firstTab) firstTab.classList.add('active');
+        });
+    </script>
+
   </head>
   <body>
     <div class="container">
@@ -23,6 +53,7 @@
       </div>
       <div class="tabs">
         <button class="tab-button" data-tab="sobre">Sobre Mim</button> 
+        <button class="tab-button" data-tab="personalidade">Personalidade</button> 
         <button class="tab-button" data-tab="interesses">Interesses</button> 
         <button class="tab-button" data-tab="galeria">Galeria</button>
       </div>
@@ -59,26 +90,39 @@ Tenho também um interesse enorme por conhecer lugares novos, culturas e pessoas
           <h2>Galeria de Fotos</h2>
           <p>Aqui estão alguns momentos especiais:</p>
           <div class="gallery">
- <div class="gallery">
-            <div class="gallery-item">📸</div>
-            <div class="gallery-item">🌟</div>
-            <div class="gallery-item">🎨</div>
-            <div class="gallery-item">✨</div>
-            <div class="gallery-item">🌈</div>
-            <div class="gallery-item">💜</div>
-            
-            <div class="gallery-item">🖼️</div>
-            <div class="gallery-item">🎈</div>
-            <div class="gallery-item">💖</div>
-            <div class="gallery-item">🎶</div>
+            <div class="gallery-item">
+                <img src="eudeemilia.jpg" alt="Foto principal de Emanuelle">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_viagem.jpg" alt="Emanuelle em uma viagem especial">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_violino.jpg" alt="Imagem de um violino ou de Emanuelle praticando música">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_familia.jpg" alt="Momento com a família">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_estudo.jpg" alt="Momento de estudo ou no laboratório">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_amigos.jpg" alt="Foto com amigos">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_natureza.jpg" alt="Cena da natureza ou paisagem favorita">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_petroleo.jpg" alt="Referência à área de Petróleo e Gás">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_medicina.jpg" alt="Símbolo ou referência à Medicina">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/foto_sonho.jpg" alt="Foto que representa um sonho futuro">
+            </div>
           </div>
-    
-  </div>
         </div>
-        </div>
+      </div>
     </div>
-
-    <script src="script.js"></script>
-
-  </body>
+    </body>
 </html>
