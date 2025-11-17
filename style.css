@@ -1,207 +1,131 @@
-/* NOME DO ARQUIVO: estilo.css */
-
-/* Aplica box-sizing a todos os elementos para melhor controle de layout */
+/* ------------------------------------------------------------------- */
+/* 1. Reset Básico e Fontes */
+/* ------------------------------------------------------------------- */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Degradê de fundo */
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    /* Correção: Usar 100vh garante que o fundo cubra a altura da janela do navegador */
-    min-height: 100vh;
-    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f7f6; /* Fundo suave */
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* ------------------------------------------------------------------- */
+/* 2. Layout Principal */
+/* ------------------------------------------------------------------- */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px; /* Limita a largura máxima para leitura confortável */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
 }
 
+/* ------------------------------------------------------------------- */
+/* 3. Cabeçalho (Header) e Perfil */
+/* ------------------------------------------------------------------- */
 .header {
     text-align: center;
-    margin-bottom: 50px;
-    animation: fadeIn 1s ease-in;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+#profileName {
+    font-size: 2.5em;
+    color: #3498db; /* Cor principal */
+    margin: 10px 0 5px 0;
+}
+
+#profileTitle {
+    font-size: 1.2em;
+    color: #7f8c8d;
 }
 
 .profile-photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
-    margin: 0 auto 25px;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%; /* Transforma o div em círculo */
+    background-color: #ecf0f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 80px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    font-size: 3em;
+    color: #3498db;
+    overflow: hidden; /* Garante que a imagem dentro do div fique circular */
+    border: 4px solid #3498db; /* Borda de destaque */
 }
 
-.header h1 {
-    font-size: 48px;
-    margin: 0 0 10px 0;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+/* Estilo para a imagem dentro da foto de perfil (se você for substituir o emoji) */
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.header p {
-    font-size: 22px;
-    margin: 0;
-    opacity: 0.9;
-    font-weight: 300;
-}
 
+/* ------------------------------------------------------------------- */
+/* 4. Abas de Navegação (Tabs) */
+/* ------------------------------------------------------------------- */
 .tabs {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 5px;
 }
 
 .tab-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    padding: 15px 35px;
-    font-size: 18px;
-    border-radius: 30px;
+    background: none;
+    border: none;
+    padding: 10px 15px;
     cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: #7f8c8d;
     transition: all 0.3s ease;
-    font-weight: 500;
-    backdrop-filter: blur(10px);
+    border-bottom: 3px solid transparent;
+    flex-grow: 1; /* Permite que os botões se expandam um pouco */
+    max-width: 150px;
+    text-align: center;
 }
 
-/* Efeito de hover para botões inativos */
 .tab-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #3498db;
+    background-color: #f8f8f8;
 }
 
-/* Estilo do botão ativo (cor roxa e elevação/sombra inicial) */
 .tab-button.active {
-    background: #a855f7;
-    border-color: #a855f7;
-    box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
-    /* Mantém o botão ligeiramente levantado quando ativo */
-    transform: translateY(-2px); 
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
 }
 
-/* 🚩 CORREÇÃO APLICADA AQUI:
-   Garante que o botão ativo MANTENHA A COR ROXA ao passar o mouse,
-   e apenas reforce o efeito de elevação/sombra.
-*/
-.tab-button.active:hover {
-    /* Mantém o fundo roxo da classe .active */
-    background: #a855f7;
-    /* Garante a elevação */
-    transform: translateY(-3px); 
-    /* Reforça a sombra para um efeito mais dramático de hover */
-    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.7); 
-}
-
-
+/* ------------------------------------------------------------------- */
+/* 5. Conteúdo das Abas (Content Area) */
+/* ------------------------------------------------------------------- */
 .content-area {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 40px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    min-height: 300px;
-    animation: slideUp 0.5s ease-out;
-}
-
-/* Oculta o conteúdo da aba por padrão */
-.tab-content {
-    display: none;
-}
-
-/* Mostra o conteúdo da aba que tiver a classe 'active' */
-.tab-content.active {
-    display: block;
-    animation: fadeIn 0.5s ease-in;
+    padding: 10px;
 }
 
 .tab-content h2 {
-    font-size: 36px;
-    margin: 0 0 25px 0;
-    color: #ffffff;
-    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .tab-content p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin: 0 0 20px 0;
-    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 15px;
+    text-align: justify;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.gallery-item {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 60px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .header h1 {
-        font-size: 36px;
-    }
-
-    .header p {
-        font-size: 18px;
-    }
-
-    .content-area {
-        padding: 25px;
-    }
-
-    .tab-content h2 {
-        font-size: 28px;
-    }
-
-    .tab-content p {
-        font-size: 16px;
-    }
+/* Esconde todos os conteúdos por padrão */
+.
