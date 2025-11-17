@@ -1,128 +1,360 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Pessoal</title>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Pessoal</title>
+  
+    <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="style.css">
-    
-    <script>
-        const __initial_config = {};
-        const __app_id = 'personal-site-app';
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.tab-button');
-            const contents = document.querySelectorAll('.tab-content');
+    <script src="/_sdk/element_sdk.js"></script>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header class="header">
+   <nav class="nav container">
+    <div class="logo" id="logo">
+     Meu Site
+    </div>
+    <ul class="nav-links">
+     <li><a href="#home">Início</a></li>
+     <li><a href="#about">Sobre</a></li>
+     <li><a href="#interests">Interesses</a></li>
+     <li><a href="#gallery">Galeria</a></li>
+     <li><a href="#contact">Contato</a></li>
+    </ul>
+   </nav>
+  </header>
+  <main>
+   <section id="home" class="hero">
+    <div class="container">
+     <div class="hero-content">
+      <div class="profile-image">
+       📸
+      </div>
+      <h1 id="nome">Seu Nome</h1>
+      <p class="subtitle" id="titulo">Seu Título/Profissão</p>
+      <p class="bio" id="bio">Uma breve descrição sobre você e o que faz. Conte sua história de forma envolvente.</p>
+     </div>
+    </div>
+   </section>
+   <section id="about" class="section">
+    <div class="container">
+     <h2 class="section-title" id="sobre-titulo">Sobre Mim</h2>
+     <div class="about-content">
+      <div class="about-image">
+       👤
+      </div>
+      <div class="about-text">
+       <p id="sobre-texto">Aqui você pode contar mais detalhes sobre sua trajetória, experiências, formação e o que te motiva. Fale sobre seus projetos, conquistas e objetivos futuros.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="interests" class="section">
+    <div class="container">
+     <h2 class="section-title" id="interesses-titulo">Meus Interesses</h2>
+     <div class="interests-grid">
+      <div class="interest-card">
+       <div class="interest-icon">
+        🎨
+       </div>
+       <h3>Design</h3>
+       <p>Apaixonado por criar experiências visuais únicas e funcionais.</p>
+      </div>
+      <div class="interest-card">
+       <div class="interest-icon">
+        💻
+       </div>
+       <h3>Tecnologia</h3>
+       <p>Sempre explorando as últimas tendências e inovações tecnológicas.</p>
+      </div>
+      <div class="interest-card">
+       <div class="interest-icon">
+        📚
+       </div>
+       <h3>Aprendizado</h3>
+       <p>Constantemente buscando novos conhecimentos e habilidades.</p>
+      </div>
+      <div class="interest-card">
+       <div class="interest-icon">
+        🌍
+       </div>
+       <h3>Viagens</h3>
+       <p>Explorando novos lugares e culturas ao redor do mundo.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="gallery" class="section">
+    <div class="container">
+     <h2 class="section-title">Galeria</h2>
+     <div class="gallery-grid">
+      <div class="gallery-item">
+       📷
+      </div>
+      <div class="gallery-item">
+       🖼️
+      </div>
+      <div class="gallery-item">
+       🎭
+      </div>
+      <div class="gallery-item">
+       🌟
+      </div>
+      <div class="gallery-item">
+       🎪
+      </div>
+      <div class="gallery-item">
+       🎨
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="contact" class="section">
+    <div class="container">
+     <h2 class="section-title" id="contato-titulo">Entre em Contato</h2>
+     <div class="contact-content">
+      <p>Vamos conversar! Entre em contato comigo através dos canais abaixo.</p>
+      <div class="contact-info">
+       <div class="contact-item">
+        <div class="contact-icon">
+         📧
+        </div>
+        <h3>Email</h3>
+        <p>seu@email.com</p>
+       </div>
+       <div class="contact-item">
+        <div class="contact-icon">
+         📱
+        </div>
+        <h3>Telefone</h3>
+        <p>(11) 99999-9999</p>
+       </div>
+       <div class="contact-item">
+        <div class="contact-icon">
+         💼
+        </div>
+        <h3>LinkedIn</h3>
+        <p>linkedin.com/in/seuperfil</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="container">
+    <p>© 2024 Seu Nome. Todos os direitos reservados.</p>
+   </div>
+  </footer>
+  <script>
+        const defaultConfig = {
+            nome: "Seu Nome",
+            titulo: "Seu Título/Profissão", 
+            bio: "Uma breve descrição sobre você e o que faz. Conte sua história de forma envolvente.",
+            sobre_titulo: "Sobre Mim",
+            sobre_texto: "Aqui você pode contar mais detalhes sobre sua trajetória, experiências, formação e o que te motiva. Fale sobre seus projetos, conquistas e objetivos futuros.",
+            interesses_titulo: "Meus Interesses",
+            contato_titulo: "Entre em Contato",
+            background_color: "#667eea",
+            surface_color: "#ffffff",
+            text_color: "#2d1b69",
+            primary_action_color: "#764ba2",
+            secondary_action_color: "#b794f6",
+            font_family: "Inter",
+            font_size: 16
+        };
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove 'active' de todos os botões e conteúdos
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
+        async function onConfigChange(config) {
+            const nome = config.nome || defaultConfig.nome;
+            const titulo = config.titulo || defaultConfig.titulo;
+            const bio = config.bio || defaultConfig.bio;
+            const sobreTitulo = config.sobre_titulo || defaultConfig.sobre_titulo;
+            const sobreTexto = config.sobre_texto || defaultConfig.sobre_texto;
+            const interessesTitulo = config.interesses_titulo || defaultConfig.interesses_titulo;
+            const contatoTitulo = config.contato_titulo || defaultConfig.contato_titulo;
+            
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
 
-                    // Adiciona 'active' ao botão clicado
-                    tab.classList.add('active');
+            // Update text content
+            document.getElementById('nome').textContent = nome;
+            document.getElementById('titulo').textContent = titulo;
+            document.getElementById('bio').textContent = bio;
+            document.getElementById('sobre-titulo').textContent = sobreTitulo;
+            document.getElementById('sobre-texto').textContent = sobreTexto;
+            document.getElementById('interesses-titulo').textContent = interessesTitulo;
+            document.getElementById('contato-titulo').textContent = contatoTitulo;
+            document.getElementById('logo').textContent = nome;
 
-                    // Encontra e adiciona 'active' ao conteúdo correspondente
-                    const targetId = tab.getAttribute('data-tab');
-                    const targetContent = document.getElementById(targetId);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-                });
-            });
+            // Update colors
+            document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${primaryActionColor} 100%)`;
+            document.body.style.color = textColor;
+            
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                if (index % 2 === 0) {
+                    section.style.backgroundColor = surfaceColor;
+                } else {
+                    section.style.backgroundColor = '#f8fafc';
+                }
+            });
 
-            // Garante que a primeira aba esteja ativa ao carregar
-            const firstTab = document.querySelector('.tab-button');
-            if(firstTab) firstTab.classList.add('active');
-        });
-    </script>
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.style.color = textColor;
+            });
 
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="profile-photo" id="profilePhoto">
-          👤
-        </div>
-        <h1 id="profileName">Emanuelle</h1>
-        <p id="profileTitle">Estudante</p>
-      </div>
-      <div class="tabs">
-        <button class="tab-button" data-tab="sobre">Sobre Mim</button> 
-        <button class="tab-button" data-tab="personalidade">Personalidade</button> 
-        <button class="tab-button" data-tab="interesses">Interesses</button> 
-        <button class="tab-button" data-tab="galeria">Galeria</button>
-      </div>
-      <div class="content-area">
-        <div class="tab-content active" id="sobre">
-          <h2>Sobre Mim</h2>
-          <p id="aboutText">Tenho 17 anos e sou uma adolescente, estudante dedicada e estou atualmente no 2º ano do Ensino Médio, cursando concomitantemente o Técnico Integrado em Desenvolvimento de Sistemas.
+            const logo = document.querySelector('.logo');
+            logo.style.color = primaryActionColor;
 
-Visualmente, tenho a pele clara e olhos castanhos expressivos. Meu cabelo é minha marca registrada: uma cascata de cachos com a raiz mais escura que transiciona para pontas loiras vibrantes, o que me dá um visual cheio de personalidade e movimento.
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.style.color = textColor;
+            });
 
-No trato social, sou extremamente animada, carinhosa e, na maioria das vezes, estou com um sorriso contagiante que ilumina o ambiente. Meu afeto é genuíno e me considero uma amiga leal e uma pessoa acolhedora. Contudo, admito que sou um tanto teimosa ao defender minhas convicções e, em momentos de pressão, posso ficar um pouco estressada. Curiosamente, as pessoas que me conhecem dizem que sou muito parecida com a minha mãe, o que me faz sentir que carrego uma força familiar na minha personalidade marcante.</p>
-        </div>
-        <div class="tab-content" id="personalidade">
-          <h2>Minha Personalidade</h2>
-          <p id="personalityText">Sou uma pessoa criativa, apaixonada por aprender coisas novas e sempre em busca de desafios. Gosto de me conectar com pessoas e compartilhar experiências. Valorizo a autenticidade e acredito que cada dia é uma oportunidade para crescer e evoluir.</p>
-        </div>
-        <div class="tab-content" id="interesses">
-          <h2>Meus Interesses</h2>
-          <p id="interestsText">Meus interesses se dividem em dois grandes caminhos: a busca por uma excelência profissional e a construção de uma vida pessoal plena.
+            const interestCards = document.querySelectorAll('.interest-card h3, .contact-item h3');
+            interestCards.forEach(card => {
+                card.style.color = textColor;
+            });
 
-Sonhos de Carreira e Formação:
-Meu foco principal no futuro é me formar na faculdade dos sonhos. Eu me vejo seguindo a área de Medicina ou me aprofundando no setor de Refinaria, Gás e Petróleo. Em qualquer uma das escolhas, meu grande objetivo é me tornar uma especialista na minha área de atuação futura, dedicando-me ao máximo para alcançar o sucesso e fazer a diferença.
+            const gradientElements = document.querySelectorAll('.profile-image, .about-image, .interest-icon, .gallery-item, .contact-icon');
+            gradientElements.forEach(element => {
+                element.style.background = `linear-gradient(45deg, ${secondaryActionColor}, ${primaryActionColor})`;
+            });
 
-Vida Pessoal e Família:
-Um dos meus maiores sonhos é construir minha própria família. Eu me visualizo casada e, principalmente, realizando o sonho de ser mãe. Meu desejo inicial é ter um casal de filhos, criando um ambiente carinhoso e feliz.
+            // Update fonts
+            const baseFontStack = 'Arial, sans-serif';
+            document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+            
+            // Scale fonts proportionally
+            document.querySelector('.hero h1').style.fontSize = `${fontSize * 1.875}px`; // 3rem = 48px at 16px base
+            document.querySelector('.hero .subtitle').style.fontSize = `${fontSize * 1.5}px`; // 1.5rem = 24px
+            document.querySelector('.hero .bio').style.fontSize = `${fontSize * 1.1}px`; // 1.1rem
+            document.querySelector('.logo').style.fontSize = `${fontSize * 1.5}px`; // 1.5rem
+            
+            const sectionTitlesFont = document.querySelectorAll('.section-title');
+            sectionTitlesFont.forEach(title => {
+                title.style.fontSize = `${fontSize * 2.5}px`; // 2.5rem = 40px
+            });
 
-Paixões e Novas Descobertas:
-Além da área profissional e familiar, nutro uma grande paixão por artes. Como continuação de um sonho, gostaria muito de voltar a fazer aulas de música, com foco especial no violino. A música é uma forma de expressar minha intensidade.
+            const aboutText = document.querySelector('.about-text');
+            aboutText.style.fontSize = `${fontSize * 1.1}px`; // 1.1rem
 
-Tenho também um interesse enorme por conhecer lugares novos, culturas e pessoas. Adoro a ideia de viajar e descobrir o mundo, começando por explorar diversos pontos turísticos aqui do Brasil. Cada viagem é uma oportunidade de aprendizado e de colecionar novas experiências.</p>
-        </div>
-        
-        <div class="tab-content" id="galeria">
-          <h2>Galeria de Fotos</h2>
-          <p>Aqui estão alguns momentos especiais:</p>
-          <div class="gallery">
-            <div class="gallery-item">
-                <img src="eudeemilia.jpg" alt="Foto principal de Emanuelle">
-            </div>
-            <div class="gallery-item">
-                <img src="manubbnafonte.jpg" alt="Emanuelle em uma viagem especial">
-            </div>
-            <div class="gallery-item">
-                <img src="fotodoarconapraia.jpg" alt="Imagem de um violino ou de Emanuelle praticando música">
-            </div>
-            <div class="gallery-item">
-                <img src="eucriançasorrindo.jpg" alt="Momento com a família">
-            </div>
-            <div class="gallery-item">
-                <img src="2CDS1.jpg" alt="Momento de estudo ou no laboratório">
-            </div>
-            <div class="gallery-item">
-                <img src="eucomobuque.jpg" alt="Foto com amigos">
-            </div>
-            <div class="gallery-item">
-                <img src="eubbcobrindoorosto.jpg" alt="Cena da natureza ou paisagem favorita">
-            </div>
-            <div class="gallery-item">
-                <img src="2CDS2.jpg" alt="Referência à área de Petróleo e Gás">
-            </div>
-            <div class="gallery-item">
-                <img src="imagens/foto_medicina.jpg" alt="Símbolo ou referência à Medicina">
-            </div>
-            <div class="gallery-item">
-                <img src="imagens/foto_sonho.jpg" alt="Foto que representa um sonho futuro">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </body>
+            const interestCardTitles = document.querySelectorAll('.interest-card h3');
+            interestCardTitles.forEach(title => {
+                title.style.fontSize = `${fontSize * 1.3}px`; // 1.3rem
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["nome", config.nome || defaultConfig.nome],
+                ["titulo", config.titulo || defaultConfig.titulo],
+                ["bio", config.bio || defaultConfig.bio],
+                ["sobre_titulo", config.sobre_titulo || defaultConfig.sobre_titulo],
+                ["sobre_texto", config.sobre_texto || defaultConfig.sobre_texto],
+                ["interesses_titulo", config.interesses_titulo || defaultConfig.interesses_titulo],
+                ["contato_titulo", config.contato_titulo || defaultConfig.contato_titulo]
+            ]);
+        }
+
+        // Initialize SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a001a8db714324e',t:'MTc2MzM5MTY5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

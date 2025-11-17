@@ -1,540 +1,312 @@
-<!doctype html>
-<html lang="pt-BR">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Pessoal</title>
-  <script src="/_sdk/element_sdk.js"></script>
-  <style>
-        body {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -webkit-system-font, system-ui, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100%;
-        }
+/*
+ATENÇÃO: Este código CSS foi removido da tag <style> e colocado aqui.
+Ele usa as variáveis globais que o JavaScript atualiza, mas funciona como CSS padrão.
+*/
 
-        html {
-            height: 100%;
-        }
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #2d1b69;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100%;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+html {
+    height: 100%;
+}
 
-        /* Header/Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+/* Header */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(118, 75, 162, 0.1);
+}
 
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0 0 0.5rem 0;
-            color: #1a202c;
-            font-weight: 700;
-        }
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
 
-        .hero .profession {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #764ba2;
+}
 
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
 
-        .nav-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: #2d1b69;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
+.nav-links a:hover {
+    color: #764ba2;
+}
 
-        /* Sections */
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
+/* Hero Section */
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    color: white;
+}
 
-        .section.active {
-            display: block;
-        }
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        .section h2 {
-            font-size: 2.5rem;
-            color: #1a202c;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 700;
-        }
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    background: linear-gradient(45deg, #b794f6, #e879f9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
-        /* Sobre Mim */
-        .about-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.hero h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem;
+    font-weight: 700;
+}
 
-        /* Interesses */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin: 0 0 2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
 
-        .interest-card {
-            background: linear-gradient(45deg, #f7fafc, #edf2f7);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 2px solid transparent;
-        }
+.hero .bio {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        .interest-card:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-        }
+/* Sections */
+.section {
+    padding: 80px 0;
+    background: white;
+}
 
-        .interest-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+.section:nth-child(even) {
+    background: #f8fafc;
+}
 
-        .interest-card h3 {
-            color: #1a202c;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2d1b69;
+    font-weight: 700;
+}
 
-        /* Galeria */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
 
-        .gallery-item {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            height: 250px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
+.about-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, #b794f6, #e879f9);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    color: white;
+    box-shadow: 0 20px 40px rgba(118, 75, 162, 0.2);
+}
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4a5568;
+}
 
-        /* Botão Voltar */
-        .back-btn {
-            background: #718096;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
+/* Interests Section */
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-        .back-btn:hover {
-            background: #4a5568;
-            transform: translateY(-1px);
-        }
+.interest-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(118, 75, 162, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+.interest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(118, 75, 162, 0.2);
+}
 
-            .hero {
-                padding: 2rem 1rem;
-            }
+.interest-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #b794f6, #e879f9);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
 
-            .hero h1 {
-                font-size: 2rem;
-            }
+.interest-card h3 {
+    color: #2d1b69;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
 
-            .hero .profession {
-                font-size: 1.2rem;
-            }
+.interest-card p {
+    color: #4a5568;
+    line-height: 1.6;
+}
 
-            .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+/* Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
 
-            .nav-btn {
-                width: 200px;
-            }
+.gallery-item {
+    aspect-ratio: 1;
+    background: linear-gradient(45deg, #b794f6, #e879f9);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
-            .section {
-                padding: 2rem 1rem;
-            }
+.gallery-item:hover {
+    transform: scale(1.05);
+}
 
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="container"><!-- Hero Section -->
-   <div class="hero" id="home">
-    <div class="profile-photo">
-     👤
-    </div>
-    <h1 id="nome-display">João Silva</h1>
-    <div class="profession" id="profissao-display">
-     Desenvolvedor Web
-    </div>
-    <div class="nav-buttons"><button class="nav-btn" onclick="showSection('sobre')">Sobre Mim</button> <button class="nav-btn" onclick="showSection('interesses')">Interesses</button> <button class="nav-btn" onclick="showSection('galeria')">Galeria</button>
-    </div>
-   </div><!-- Sobre Mim -->
-   <div class="section" id="sobre"><button class="back-btn" onclick="showSection('home')">← Voltar</button>
-    <h2 id="sobre-titulo-display">Sobre Mim</h2>
-    <div class="about-content">
-     <p id="sobre-texto-display">Sou um profissional apaixonado por tecnologia e inovação. Tenho experiência em desenvolvimento web e sempre busco aprender novas tecnologias para criar soluções criativas e eficientes.</p>
-    </div>
-   </div><!-- Interesses -->
-   <div class="section" id="interesses"><button class="back-btn" onclick="showSection('home')">← Voltar</button>
-    <h2 id="interesses-titulo-display">Meus Interesses</h2>
-    <div class="interests-grid">
-     <div class="interest-card">
-      <div class="interest-icon">
-       💻
-      </div>
-      <h3>Programação</h3>
-      <p>Desenvolvimento de aplicações web modernas e responsivas</p>
-     </div>
-     <div class="interest-card">
-      <div class="interest-icon">
-       🎨
-      </div>
-      <h3>Design</h3>
-      <p>Criação de interfaces intuitivas e experiências visuais marcantes</p>
-     </div>
-     <div class="interest-card">
-      <div class="interest-icon">
-       📚
-      </div>
-      <h3>Aprendizado</h3>
-      <p>Sempre em busca de novos conhecimentos e tecnologias</p>
-     </div>
-     <div class="interest-card">
-      <div class="interest-icon">
-       🚀
-      </div>
-      <h3>Inovação</h3>
-      <p>Explorar novas possibilidades e soluções criativas</p>
-     </div>
-    </div>
-   </div><!-- Galeria -->
-   <div class="section" id="galeria"><button class="back-btn" onclick="showSection('home')">← Voltar</button>
-    <h2 id="galeria-titulo-display">Galeria</h2>
-    <div class="gallery-grid">
-     <div class="gallery-item" onclick="openProject('Projeto 1')"><span>Projeto Web 1</span>
-     </div>
-     <div class="gallery-item" onclick="openProject('Projeto 2')"><span>Aplicativo Mobile</span>
-     </div>
-     <div class="gallery-item" onclick="openProject('Projeto 3')"><span>Design UI/UX</span>
-     </div>
-     <div class="gallery-item" onclick="openProject('Projeto 4')"><span>E-commerce</span>
-     </div>
-     <div class="gallery-item" onclick="openProject('Projeto 5')"><span>Dashboard</span>
-     </div>
-     <div class="gallery-item" onclick="openProject('Projeto 6')"><span>Landing Page</span>
-     </div>
-    </div>
-   </div>
-  </div>
-  <script>
-        // Configuração padrão
-        const defaultConfig = {
-            nome: "João Silva",
-            profissao: "Desenvolvedor Web",
-            sobre_titulo: "Sobre Mim",
-            sobre_texto: "Sou um profissional apaixonado por tecnologia e inovação. Tenho experiência em desenvolvimento web e sempre busco aprender novas tecnologias para criar soluções criativas e eficientes.",
-            interesses_titulo: "Meus Interesses",
-            galeria_titulo: "Galeria",
-            background_color: "#667eea",
-            surface_color: "#ffffff",
-            text_color: "#2d3748",
-            primary_action_color: "#667eea",
-            secondary_action_color: "#718096",
-            font_family: "Inter",
-            font_size: 16
-        };
+/* Contact Section */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        // Função para mostrar seções
-        function showSection(sectionId) {
-            // Esconder todas as seções
-            const sections = document.querySelectorAll('.section, .hero');
-            sections.forEach(section => {
-                section.classList.remove('active');
-                section.style.display = 'none';
-            });
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-            // Mostrar a seção selecionada
-            if (sectionId === 'home') {
-                document.querySelector('.hero').style.display = 'block';
-            } else {
-                const targetSection = document.getElementById(sectionId);
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                    targetSection.classList.add('active');
-                }
-            }
-        }
+.contact-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(118, 75, 162, 0.1);
+}
 
-        // Função para abrir projetos da galeria
-        function openProject(projectName) {
-            // Criar modal simples para mostrar projeto
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            `;
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #b794f6, #e879f9);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
 
-            const modalContent = document.createElement('div');
-            modalContent.style.cssText = `
-                background: white;
-                padding: 2rem;
-                border-radius: 15px;
-                text-align: center;
-                max-width: 500px;
-                margin: 1rem;
-            `;
+.contact-item h3 {
+    color: #2d1b69;
+    margin-bottom: 0.5rem;
+}
 
-            modalContent.innerHTML = `
-                <h3 style="color: #1a202c; margin-bottom: 1rem;">${projectName}</h3>
-                <p style="color: #4a5568; margin-bottom: 2rem;">Detalhes do projeto serão exibidos aqui. Este é um exemplo de como seus projetos podem ser apresentados.</p>
-                <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" 
-                        style="background: #667eea; color: white; border: none; padding: 0.8rem 2rem; border-radius: 25px; cursor: pointer;">
-                    Fechar
-                </button>
-            `;
+.contact-item p {
+    color: #4a5568;
+    margin: 0;
+}
 
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
+/* Footer */
+.footer {
+    background: #2d1b69;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
 
-            // Fechar modal ao clicar fora
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.remove();
-                }
-            });
-        }
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        /* Os links de navegação estão configurados para sumir em telas pequenas */
+        display: none; 
+    }
 
-        // Função para atualizar a interface com base na configuração
-        async function onConfigChange(config) {
-            const baseSize = config.font_size || defaultConfig.font_size;
-            const customFont = config.font_family || defaultConfig.font_family;
-            const baseFontStack = 'system-ui, -apple-system, sans-serif';
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-            // Atualizar textos
-            document.getElementById('nome-display').textContent = config.nome || defaultConfig.nome;
-            document.getElementById('profissao-display').textContent = config.profissao || defaultConfig.profissao;
-            document.getElementById('sobre-titulo-display').textContent = config.sobre_titulo || defaultConfig.sobre_titulo;
-            document.getElementById('sobre-texto-display').textContent = config.sobre_texto || defaultConfig.sobre_texto;
-            document.getElementById('interesses-titulo-display').textContent = config.interesses_titulo || defaultConfig.interesses_titulo;
-            document.getElementById('galeria-titulo-display').textContent = config.galeria_titulo || defaultConfig.galeria_titulo;
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
 
-            // Atualizar cores
-            const backgroundColor = config.background_color || defaultConfig.background_color;
-            const surfaceColor = config.surface_color || defaultConfig.surface_color;
-            const textColor = config.text_color || defaultConfig.text_color;
-            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
-            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 
-            document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${primaryActionColor} 100%)`;
-            
-            // Atualizar superfícies
-            const surfaces = document.querySelectorAll('.hero, .section');
-            surfaces.forEach(surface => {
-                surface.style.background = `rgba(255, 255, 255, 0.95)`;
-            });
+    .section-title {
+        font-size: 2rem;
+    }
 
-            // Atualizar texto
-            document.body.style.color = textColor;
-            const headings = document.querySelectorAll('h1, h2, h3');
-            headings.forEach(heading => {
-                heading.style.color = textColor;
-            });
-
-            // Atualizar botões primários
-            const primaryBtns = document.querySelectorAll('.nav-btn');
-            primaryBtns.forEach(btn => {
-                btn.style.background = `linear-gradient(45deg, ${primaryActionColor}, ${backgroundColor})`;
-            });
-
-            // Atualizar botões secundários
-            const secondaryBtns = document.querySelectorAll('.back-btn');
-            secondaryBtns.forEach(btn => {
-                btn.style.background = secondaryActionColor;
-            });
-
-            // Atualizar fontes e tamanhos
-            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-            document.body.style.fontSize = `${baseSize}px`;
-
-            // Escalar títulos proporcionalmente
-            const mainTitle = document.querySelector('.hero h1');
-            if (mainTitle) mainTitle.style.fontSize = `${baseSize * 1.875}px`;
-
-            const profession = document.querySelector('.hero .profession');
-            if (profession) profession.style.fontSize = `${baseSize * 1.125}px`;
-
-            const sectionTitles = document.querySelectorAll('.section h2');
-            sectionTitles.forEach(title => {
-                title.style.fontSize = `${baseSize * 1.5}px`;
-            });
-        }
-
-        // Inicializar SDK
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange,
-                mapToCapabilities: (config) => ({
-                    recolorables: [
-                        {
-                            get: () => config.background_color || defaultConfig.background_color,
-                            set: (value) => {
-                                config.background_color = value;
-                                window.elementSdk.setConfig({ background_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.surface_color || defaultConfig.surface_color,
-                            set: (value) => {
-                                config.surface_color = value;
-                                window.elementSdk.setConfig({ surface_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.text_color || defaultConfig.text_color,
-                            set: (value) => {
-                                config.text_color = value;
-                                window.elementSdk.setConfig({ text_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
-                            set: (value) => {
-                                config.primary_action_color = value;
-                                window.elementSdk.setConfig({ primary_action_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-                            set: (value) => {
-                                config.secondary_action_color = value;
-                                window.elementSdk.setConfig({ secondary_action_color: value });
-                            }
-                        }
-                    ],
-                    borderables: [],
-                    fontEditable: {
-                        get: () => config.font_family || defaultConfig.font_family,
-                        set: (value) => {
-                            config.font_family = value;
-                            window.elementSdk.setConfig({ font_family: value });
-                        }
-                    },
-                    fontSizeable: {
-                        get: () => config.font_size || defaultConfig.font_size,
-                        set: (value) => {
-                            config.font_size = value;
-                            window.elementSdk.setConfig({ font_size: value });
-                        }
-                    }
-                }),
-                mapToEditPanelValues: (config) => new Map([
-                    ["nome", config.nome || defaultConfig.nome],
-                    ["profissao", config.profissao || defaultConfig.profissao],
-                    ["sobre_titulo", config.sobre_titulo || defaultConfig.sobre_titulo],
-                    ["sobre_texto", config.sobre_texto || defaultConfig.sobre_texto],
-                    ["interesses_titulo", config.interesses_titulo || defaultConfig.interesses_titulo],
-                    ["galeria_titulo", config.galeria_titulo || defaultConfig.galeria_titulo]
-                ])
-            });
-        }
-
-        // Inicializar página
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection('home');
-            onConfigChange(defaultConfig);
-        });
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0013004516f17f',t:'MTc2MzM5MTM4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        font-size: 3rem;
+    }
+}
