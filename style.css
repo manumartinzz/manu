@@ -1,5 +1,8 @@
 /* ------------------------------------------------------------------- */
-/* 1. Reset Básico e Fontes */
+/* PALETA DE CORES LILÁS/ROXO */
+/* Cor Principal: #8e44ad (Roxo Ametista) */
+/* Cor de Destaque/Acento: #9b59b6 (Roxo mais claro) */
+/* Cor Suave: #e6e0f8 (Lavanda claro) */
 /* ------------------------------------------------------------------- */
 * {
     box-sizing: border-box;
@@ -8,8 +11,8 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f4f7f6; /* Fundo suave */
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f6fb; /* Fundo muito suave, quase branco */
     line-height: 1.6;
     color: #333;
     display: flex;
@@ -23,10 +26,11 @@ body {
 .container {
     background-color: #ffffff;
     width: 100%;
-    max-width: 900px; /* Limita a largura máxima para leitura confortável */
+    max-width: 900px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 40px rgba(142, 68, 173, 0.1); /* Sombra suave com toque lilás */
     padding: 30px;
+    margin-top: 10px;
 }
 
 /* ------------------------------------------------------------------- */
@@ -34,42 +38,49 @@ body {
 /* ------------------------------------------------------------------- */
 .header {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 1px;
 }
 
 #profileName {
-    font-size: 2.5em;
-    color: #3498db; /* Cor principal */
+    font-size: 2.8em;
+    color: #8e44ad; /* Roxo Ametista */
     margin: 10px 0 5px 0;
+    font-weight: 700;
 }
 
 #profileTitle {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #7f8c8d;
+    font-weight: 300;
 }
 
 .profile-photo {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    border-radius: 50%; /* Transforma o div em círculo */
-    background-color: #ecf0f1;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    background-color: #e6e0f8; /* Lavanda claro */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3em;
-    color: #3498db;
-    overflow: hidden; /* Garante que a imagem dentro do div fique circular */
-    border: 4px solid #3498db; /* Borda de destaque */
+    font-size: 3.5em;
+    color: #8e44ad;
+    overflow: hidden;
+    border: 5px solid #ffffff;
+    box-shadow: 0 0 0 3px #9b59b6; /* Roxo mais claro como destaque */
 }
 
-/* Estilo para a imagem dentro da foto de perfil (se você for substituir o emoji) */
+/* Estilo para a imagem dentro da foto de perfil */
 .profile-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 
@@ -80,7 +91,7 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    gap: 5px;
+    gap: 15px;
 }
 
 .tab-button {
@@ -93,19 +104,19 @@ body {
     color: #7f8c8d;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
-    flex-grow: 1; /* Permite que os botões se expandam um pouco */
-    max-width: 150px;
     text-align: center;
+    opacity: 0.8;
 }
 
 .tab-button:hover {
-    color: #3498db;
-    background-color: #f8f8f8;
+    color: #9b59b6; /* Roxo mais claro no hover */
+    opacity: 1;
 }
 
 .tab-button.active {
-    color: #3498db;
-    border-bottom: 3px solid #3498db;
+    color: #8e44ad; /* Roxo Ametista na aba ativa */
+    border-bottom: 3px solid #8e44ad;
+    opacity: 1;
 }
 
 /* ------------------------------------------------------------------- */
@@ -116,16 +127,91 @@ body {
 }
 
 .tab-content h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #ecf0f1;
+    color: #8e44ad; /* Roxo Ametista nos títulos */
+    border-bottom: 2px solid #e6e0f8; /* Linha divisória em lavanda */
     padding-bottom: 10px;
     margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .tab-content p {
     margin-bottom: 15px;
     text-align: justify;
+    color: #555;
 }
 
 /* Esconde todos os conteúdos por padrão */
-.
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+/* Mostra apenas o conteúdo ativo */
+.tab-content.active {
+    display: block;
+}
+
+/* Animação de transição para as abas */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------------------------------- */
+/* 6. Galeria de Fotos */
+/* ------------------------------------------------------------------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 12px;
+    padding-top: 10px;
+}
+
+.gallery-item {
+    aspect-ratio: 1 / 1; 
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(142, 68, 173, 0.15); /* Sombra com toque roxo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(142, 68, 173, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); 
+}
+
+/* ------------------------------------------------------------------- */
+/* 7. Responsividade */
+/* ------------------------------------------------------------------- */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .tabs {
+        flex-wrap: wrap; 
+        gap: 5px;
+    }
+
+    .tab-button {
+        flex-grow: 1;
+        font-size: 0.9em;
+        padding: 8px 5px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
